@@ -1472,6 +1472,7 @@ function run() {
                 if (currentTime < pullRequestLifetime) {
                     continue;
                 }
+                core.info(JSON.stringify(pullRequestResponse.repository.pullRequest));
                 const reminderComment = `@${pr.user.login}\n${reminderMessage}`;
                 const hasReminderComment = pullRequestResponse.repository.pullRequest.comments.nodes.filter(node => {
                     core.info(`reminderComment ${reminderComment}`);
