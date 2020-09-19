@@ -70,19 +70,19 @@ async function run(): Promise<void> {
         continue
       }
 
-      core.info(JSON.stringify(pullRequestResponse.repository.pullRequest))
-      const reminderComment = `@${pr.user.login}\n${reminderMessage}`
+      core.info(JSON.stringify(pullRequestResponse))
+      const addReminderComment = `@${pr.user.login}\n${reminderMessage}`
       const hasReminderComment =
         pullRequestResponse.repository.pullRequest.comments.nodes.filter(
           node => {
-            core.info(`reminderComment ${reminderComment}`)
+            core.info(`reminderComment ${reminderMessage}`)
             core.info(`node.body ${node.body}`)
             core.info(
               `body !=  reminderComment ${
-                node.body.match(RegExp(reminderComment)) != null
+                node.body.match(RegExp(reminderMessage)) != null
               }`
             )
-            return node.body.match(RegExp(reminderComment)) != null
+            return node.body.match(RegExp(reminderMessage)) != null
           }
         ).length > 0
 
@@ -94,11 +94,11 @@ async function run(): Promise<void> {
       await octokit.issues.createComment({
         ...github.context.repo,
         issue_number: pr.number,
-        body: reminderComment
+        body: addReminderComment
       })
 
       core.info(
-        `create comment issue_number: ${pr.number} body: ${reminderComment}`
+        `create comment issue_number: ${pr.number} body: ${addReminderComment}`
       )
     }
   } catch (error) {
