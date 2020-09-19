@@ -73,9 +73,19 @@ async function run(): Promise<void> {
       const reminderComment = `@${pr.user.login}\n${reminderMessage}`
       const hasReminderComment =
         pullRequestResponse.repository.pullRequest.comments.nodes.filter(
-          node => node.body.match(RegExp(reminderComment)) != null
+          node => {
+            core.info(`reminderComment ${reminderComment}`)
+            core.info(`node.body ${node.body}`)
+            core.info(
+              `body !=  reminderComment ${
+                node.body.match(RegExp(reminderComment)) != null
+              }`
+            )
+            return node.body.match(RegExp(reminderComment)) != null
+          }
         ).length > 0
 
+      core.info(`hasReminderComment ${hasReminderComment}`)
       if (hasReminderComment) {
         continue
       }
