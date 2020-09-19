@@ -1446,7 +1446,7 @@ function run() {
                   }
                 }
               }
-              comments(first: 100) {
+              comments(first: 300) {
                 nodes {
                   body
                 }
