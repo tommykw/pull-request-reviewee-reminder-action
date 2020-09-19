@@ -1,11 +1,19 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Pull request reviewee reminder action'
+description: 'Action to send Github mentions when there are pull requests that has exceeded the lifetime.'
+author: 'Kenji Tomita'
 inputs:
-  milliseconds: # change this
+  github_token:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'GitHub token'
+  reminder_message:
+    required: true
+    description: 'Messages to send to reviewee on Github.'
+  pull_request_lifetime_hours:
+    required: true
+    description: 'This is a lifetime of pull request. If this time is exceeded, a reminder wil be send.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'git-pull-request'
+  color: 'gray-dark'
