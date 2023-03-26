@@ -19,7 +19,7 @@ jobs:
   pull-request-reviewee-reminder: 
     runs-on: ubuntu-latest
     steps:
-      - uses: tommykw/pull-request-reviewee-reminder-action@v1
+      - uses: tommykw/pull-request-reviewee-reminder-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Required
           reminder_message: 'The pull request has been alive for more than 2 days. Let's work with priority.' # Required. Messages to send to reviewee on Github.
