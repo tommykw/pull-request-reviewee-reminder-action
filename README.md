@@ -25,3 +25,7 @@ jobs:
           reminder_message: 'The pull request has been alive for more than 2 days. Let's work with priority.' # Required. Messages to send to reviewee on Github.
           pull_request_lifetime_hours: 48 # Required. This is a lifetime of pull request. If this time is exceeded, a reminder wil be send.
 ```
+
+## License
+
+MIT
