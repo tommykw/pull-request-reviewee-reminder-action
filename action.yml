@@ -12,7 +12,7 @@ inputs:
     required: true
     description: 'This is a lifetime of pull request. If this time is exceeded, a reminder wil be send.'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 branding:
   icon: 'git-pull-request'
